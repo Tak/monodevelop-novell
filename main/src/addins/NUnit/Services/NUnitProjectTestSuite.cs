@@ -26,7 +26,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-
+using System;
 using System.IO;
 using System.Collections.Generic;
 
@@ -56,7 +56,7 @@ namespace MonoDevelop.NUnit
 		public static NUnitProjectTestSuite CreateTest (DotNetProject project)
 		{
 			foreach (ProjectReference p in project.References)
-				if (p.Reference.IndexOf ("nunit.framework") != -1 || p.Reference.IndexOf ("nunit.core") != -1)
+				if (p.Reference.IndexOf("nunit.framework", StringComparison.OrdinalIgnoreCase) != -1 || p.Reference.IndexOf("nunit.core", StringComparison.OrdinalIgnoreCase) != -1)
 					return new NUnitProjectTestSuite (project);
 			return null;
 		}
